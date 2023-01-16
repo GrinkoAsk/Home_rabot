@@ -1,0 +1,15 @@
+C:\reppo\с++\Examples002\Examples006\bin\Debug\net7.0\Examples006.exe
+C:\reppo\с++\Examples002\Examples006\bin\Debug\net7.0\Examples006.deps.json
+C:\reppo\с++\Examples002\Examples006\bin\Debug\net7.0\Examples006.runtimeconfig.json
+C:\reppo\с++\Examples002\Examples006\bin\Debug\net7.0\Examples006.dll
+C:\reppo\с++\Examples002\Examples006\bin\Debug\net7.0\Examples006.pdb
+C:\reppo\с++\Examples002\Examples006\obj\Debug\net7.0\Examples006.csproj.AssemblyReference.cache
+C:\reppo\с++\Examples002\Examples006\obj\Debug\net7.0\Examples006.GeneratedMSBuildEditorConfig.editorconfig
+C:\reppo\с++\Examples002\Examples006\obj\Debug\net7.0\Examples006.AssemblyInfoInputs.cache
+C:\reppo\с++\Examples002\Examples006\obj\Debug\net7.0\Examples006.AssemblyInfo.cs
+C:\reppo\с++\Examples002\Examples006\obj\Debug\net7.0\Examples006.csproj.CoreCompileInputs.cache
+C:\reppo\с++\Examples002\Examples006\obj\Debug\net7.0\Examples006.dll
+C:\reppo\с++\Examples002\Examples006\obj\Debug\net7.0\refint\Examples006.dll
+C:\reppo\с++\Examples002\Examples006\obj\Debug\net7.0\Examples006.pdb
+C:\reppo\с++\Examples002\Examples006\obj\Debug\net7.0\Examples006.genruntimeconfig.cache
+C:\reppo\с++\Examples002\Examples006\obj\Debug\net7.0\ref\Examples006.dll

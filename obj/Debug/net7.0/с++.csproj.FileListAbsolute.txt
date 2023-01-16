@@ -1,0 +1,5 @@
+C:\reppo\с++\obj\Debug\net7.0\с++.csproj.AssemblyReference.cache
+C:\reppo\с++\obj\Debug\net7.0\с++.GeneratedMSBuildEditorConfig.editorconfig
+C:\reppo\с++\obj\Debug\net7.0\с++.AssemblyInfoInputs.cache
+C:\reppo\с++\obj\Debug\net7.0\с++.AssemblyInfo.cs
+C:\reppo\с++\obj\Debug\net7.0\с++.csproj.CoreCompileInputs.cache
