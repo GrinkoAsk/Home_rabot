@@ -10,6 +10,22 @@ Console.Write( "Введите число2 ");
 int numberB = Convert.ToInt32(Console.ReadLine());
 Console.Write( "Введите число3 ");
 int numberC = Convert.ToInt32(Console.ReadLine());
+int a = 1;
+int b = 2;
+int c = 6;
+
+int max=a;
+
+if(a>max) max = a;
+if(b>max) max = b;
+if(c>max) max = c;
+if(d>max) max = d;
+if(e>max) max = e;
+
+Console.WriteLine(max);
+
+
+
 
 if (numberA > numberB && numberA > numberC)
 {
