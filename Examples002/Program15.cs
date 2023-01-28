@@ -1,14 +1,21 @@
-using System;
+//Задача 15: Напишите программу, которая принимает на вход цифру, обозначающую день недели, и проверяет, является ли этот день выходным.
+// 6 -> да
+// 7 -> да
+// 1 -> нет
 
-Console.WriteLine("Введите трехзначное число:");
-int number = Convert.ToInt32(Console.ReadLine());
-string numberS = Math.Abs(number).ToString();
-Console.WriteLine(numberS.Length == 3 ? $"{number} -> {numberS[1]}" : "Вы ввели не трехзначное число");
+Console.WriteLine("Задача 15 ");
 
-/* if(numberS.Length != 3) {
-    Console.WriteLine("Вы ввели не трехзначное число");
-} else {
-    Console.WriteLine($"{number} -> {numberS[1]}");
+Console.Write("Введи цифру, обозначающую день недели: ");
+int dayNumber = Convert.ToInt32(Console.ReadLine());
+
+void CheckingTheDayOfTheWeek (int dayNumber) {
+  if (dayNumber == 6 || dayNumber == 7) {
+  Console.WriteLine("(этот день выходной) -> да");
+  }
+  else if (dayNumber < 1 || dayNumber > 7) {
+    Console.WriteLine("это вообще не день недели");
+  }
+  else Console.WriteLine("(этот день не выходной) -> нет");
 }
-*/
 
+CheckingTheDayOfTheWeek(dayNumber);
