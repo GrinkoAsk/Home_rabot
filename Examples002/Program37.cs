@@ -1,122 +1,205 @@
-//1
-#include <iostream>
-#include <vector>
+Задача 37. Найдите произведение пар чисел в одномерном массиве. 
+// Парой считаем первый и последний элемент, второй и предпоследний и т.д. 
+// Результат запишите в новом массиве.
+// СДЕЛАТЬ МИНИМУМ ТРИ МЕТОДА
+//
 
-int main()
+// Ввод числа, как массив. Массив это числа разделенные пробелом (пробелами) и или Табом
+string InputArrayAsString()
 {
-    std::vector<int> Vect;
-    int Num;
+    Console.Write(" --- Input array of integers (as example: 12 45 89 -12 101), it is array of integer");
+    Console.Write("\n --- Or input array of double (as example: 99,0 1,01 -12,24 10,0 101,0) or (11.0 -2.0 4.4 11.1), it is array of double");
+    Console.Write("\n --- The number separator is a space and or Tab!");
+    //Console.Write("\n --- Attention, please. Decimal separator, strictly comma (,)!!!");
+    Console.Write("\n --- Attention, please. Decimal separator: comma (,) and or dot (.)!!!");
 
-    while (std::cin >> Num) {
-        Vect.push_back(Num);
+    Console.Write("\nInput array, please: ");
+    string? strArray = Console.ReadLine();
+    if( String.IsNullOrEmpty(strArray) == true)
+        strArray = "";
 
-        for (decltype(Vect.size()) A = 0, B = Vect.size() -1 ; A != B; ++A, --B) {
-            std::cout << Vect[A] + Vect[B] << std::endl;
-        }
+    string str = string.Concat("", strArray);
+    return str;
+
+}
+
+// Получает на входе строку из консоли ввода. Если были введены вещественные числа, разделитель которых точка ".",
+// то надо точку заменить на запятую ",", чтобы можно было выполнить конвертацию Converte.ToDouble()
+// Возвращает строку вещественных чисел, разделитель дробной части которых - запятая ","
+string GetNormilizeStrArray(string strArray)
+{
+
+    return strArray.Replace(".", ",");
+
+}
+
+// Возвращает количество элементов в строке, разделеных пробелом: "10 -3 55 77"
+// Получаем массив строк, каждая строка - есть число в строковом виде. И кол-во строк и есть кол-во элементов
+/*
+int GetCountElementsOfArray(string strArray)
+{
+string[] words = strArray.Split(new char[] { ' ' }, StringSplitOptions.RemoveEmptyEntries);
+    return words.Length;
+}
+*/
+
+// Возвращает Истина, если strArray состоит из целых чисел, Ложь - если строка состоит из вещественных чисел.
+// Алгоритм проверки: Если в строка чисел содержится запятая ",", пример: "12,0 77,4 -55,5", значит это строка вещественных чисел.
+bool IsSrtOfIntegers(string strArray)
+{
+    bool isIntegers = true;
+
+    if(strArray.IndexOf(",") > 0)
+        isIntegers = false;
+
+    return isIntegers;
+}
+
+int[] GetConvertStrArrayToArrayInt(string[] wordsOfNumbers)
+{
+    int lengthArray = wordsOfNumbers.Length;
+    int[] array = new int[lengthArray];
+
+    for(int i = 0; i < lengthArray; ++i)
+    {
+        array[i] = Convert.ToInt32(wordsOfNumbers[i]);
     }
 
-    return 0;
+    return array;
 }
 
-//2
-uses crt;
-const nmax=100;
-var a:array[1..nmax] of integer;
-    n,i,j,k,mn,p,i1,i2:integer;
-begin
-clrscr;
-randomize;
-repeat
-write('Размер массива от 2 до ',nmax,' n=');
-readln(n);
-until n in [2..nmax];
-writeln('Исходный массив:');
-for i:=1 to n do
- begin
-  a[i]:=1+random(50);
-  write(a[i]:4);
- end;
-writeln;
-mn:=81;{произвведение последних цифр}
-k:=0;
-for i:=1 to n-1 do
-for j:=i+1 to n do
-if(a[i]<>a[j])and((a[i]mod 10)*(a[j] mod 10)<mn) then
- begin
-  k:=1;
-  mn:=(a[i]mod 10)*(a[j] mod 10);
-  i1:=a[i];
-  i2:=a[j];
-  p:=a[i]*a[j];
- end;
-if k=0 then write('Все элементы одмнаковые')
-else
- begin
-  writeln('Произведение пары различных элементов,');
-  writeln('произведение последних цифр у которых минимальное=',p);
-  writeln('Это числа ',i1,' и ',i2,' произведение последних цифр=',mn);
- end;
-readln
-end.
+double[] GetConvertStrArrayToArrayDouble(string[] wordsOfNumbers)
+{
+    int lengthArray = wordsOfNumbers.Length;
+    double[] array = new double[lengthArray];
 
+    for (int i = 0; i < lengthArray; ++i)
+    {
+        array[i] = Convert.ToDouble(wordsOfNumbers[i]);
+    }
 
-#include <iostream>
-#include <vector>
-#include <numeric>
-
-using namespace std;
-
-int pAdd (int x, int y) {
-  if (y > 0)
-    return x+y;
-  return x;
+    return array;
 }
 
-int mAdd (int x, int y) {
-  if (y < 0)
-    return x+y;
-  return x;
+// Возвращает массив слов, где каждый элемент массива число в виде строки.
+// Ключевое решение задачи ввода массива чисел в виде строки
+string[] GetStrArrayOfNumvers(string strArray)
+{
+
+    return strArray.Split(new char[] {' '}, StringSplitOptions.RemoveEmptyEntries);
+
 }
 
-int main() {
- /*
- .. получаем N если надо
- */
- vector<int> A(N);
- /*
-  .. заполняем своими данными
- */
- int sum1 = accumulate(A.begin(), A.end(), 0, pAdd);  
- int sum2 = accumulate(A.begin(), A.end(), 0, mAdd);  
- float div = (float)sum1 / sum2;
- cout<<div;
+void PrintArrayOfInt(int[] array)
+{
+    string str = "";
+    for(int i = 0; i < array.Length - 1; ++i)
+    {
+        str = str + string.Concat(array[i], ", ");
+    }
+    str = str + string.Concat("", array[array.Length - 1]);
+
+    Console.WriteLine($" Result array (int): {str}");
 }
 
-Pyton
-Напишите программу, которая найдёт произведение пар чисел списка. Парой считаем первый и последний элемент, второй и предпоследний и т.д.
+void PrintArrayOfDouble(double[] array)
+{
+    string str = "";
+    for(int i = 0; i < array.Length - 1; ++i)
+    {
+        // Не забываем красиво форматировать
+        str = str + string.Concat(string.Format("{0:f2}", array[i]), ", ");
+    }
+    str = str + string.Concat("", string.Format("{0:f2}", array[array.Length - 1]));
 
-# Пример:
+    Console.WriteLine($" Result array (double): {str}");
+}
 
-# - [2, 3, 4, 5, 6] => [12, 15, 16];
-# - [2, 3, 5, 6] => [12, 15]
+// Произведение пар чисел в одномерном массиве целых чисел. Возвращает массив целых чисел.
+int[] MultElementsOfArrayInt(int[] array)
+{
+    // Для нечетного массива, увеличим длину на 1, чтобы умножить среднее число на себя же
+    int lenHalf = array.Length / 2 + array.Length % 2;
+    int len = array.Length;
+    int[] arrayResult = new int[lenHalf];
 
-from random import randint
+    for(int i = 0; i < lenHalf; ++i)
+    {
+        arrayResult[i] = array[i] * array[len - i - 1];
+    }
 
+    return arrayResult;
 
-number = int(input('Введите размер списка '))
-list = []
-list2 = []
+}
 
-for i in range(number):
-    list.append(randint(0, 9))
+// Произведение пар чисел в одномерном массиве вещественных чисел. Возвращает массив вещественных чисел.
+double[] MultElementsOfArrayDouble(double[] array)
+{
+    int lenHalf = array.Length / 2 + array.Length % 2;
+    int len = array.Length;
+    double[] arrayResult = new double[lenHalf];
 
-for i in range(len(list)):
-    while i < len(list)/2 and number > len(list)/2:
-        number = number - 1
-        a = list[i] * list[number]
-        list2.append(a)
-        i += 1
+    for(int i = 0; i < lenHalf; ++i)
+    {
+        arrayResult[i] = array[i] * array[len - i - 1];
+    }
 
-print(list)
-print(list2)
+    return arrayResult;
 
+}
+
+void main()
+{
+    Console.WriteLine(" ------- Task-37 -------");
+
+    // Получить строку ввода массива. Это строка вида: "11 71 88 -10 -12 33", если массив целочисленных цисел
+    // Или строка вида: "11,0 -5,5 3,1 88,9" или "0.2 33.3 4.6 9.0" или "1,44 1.0 -9,0 22.11", если массив вещественных
+    // чисел (разделитель - запятая "," и или точка "."!).
+    string strArray = InputArrayAsString();
+    Console.WriteLine($"\n You input array: {strArray}");
+
+    // Получить кол-во элементов массива, без относительно целые или вещественные числа в массиве
+    //int countElements = GetCountElementsOfArray(strArray);
+
+    // Для отладки
+    //Console.WriteLine($"countElements: {countElements}");
+
+    // Если были введены вещественные числа с разделителем точка ".", то заменяем точку на запятую ","
+    strArray = GetNormilizeStrArray(strArray);
+
+    string[] wordsOfNumbers = GetStrArrayOfNumvers(strArray);
+
+    // Проверяем у нас строка целых или строка вещественных чисел в массиве
+    bool isIntegers = IsSrtOfIntegers(strArray);
+
+    // Если у нас массив целых чисел, то идем по ветке - целых чисел
+    if (isIntegers == true)
+    {
+        // Получим массив целых чисел из массива строк чисел
+        int[] array = GetConvertStrArrayToArrayInt(wordsOfNumbers);
+        // Для отладки
+        //PrintArrayOfInt(array);
+
+        // Конвертнем массив и получим массив произведений половинной длины
+        int[] arrayResult = MultElementsOfArrayInt(array);
+        // Печать результат
+        PrintArrayOfInt(arrayResult);
+    }
+    else
+    {
+        // Получим массив вещественных чисел из массива строк чисел
+        double[] array = GetConvertStrArrayToArrayDouble(wordsOfNumbers);
+        // Для отладки
+        //PrintArrayOfDouble(array);
+
+        // Конвертнем массив и получим массив произведений половинной длины
+        double[] arrayResult = MultElementsOfArrayDouble(array);
+        // Печать результат
+        PrintArrayOfDouble(arrayResult);
+    }
+
+}
+
+main();
+
+ 
